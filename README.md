@@ -27,3 +27,7 @@ pip install python-pptx
 ## OpenAI API Key
 
 You will be prompted for an OpenAI API Key. You can find this at [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+
+## Some Notes
+
+- The images cralwed have a random name and will be stored at the root directory, meaning that it will be difficult to sort through!
