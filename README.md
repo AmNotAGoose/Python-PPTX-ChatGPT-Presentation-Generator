@@ -4,13 +4,25 @@ Sorry for leaving this incomplete, I thought this was private!
 
 This is a tool to automatically generate PowerPoint presentations with OpenAI's gpt-3.5-turbo-0301 model (ChatGPT) and python-PPTX.
 
-## How to use
+## Setup
 
-1. Download main.py
-2. Make sure theme0.pptx is in the same directory as main.py
-3. Run main.py
-4. Input the information requested.
-5. The GUI may freeze when "Submit" is clicked, be patient!
+1. Install the following packages:
+```
+pip install glob
+pip install os
+pip install random
+pip install re
+pip install string
+pip install tkinter
+pip install openai
+pip install icrawler
+pip install python-pptx 
+```
+2. Download main.py
+3. Make sure theme0.pptx is in the same directory as main.py
+4. Run main.py
+5. Input the information requested.
+6. The GUI may freeze when "Submit" is clicked, be patient!
 
 ## OpenAI API Key
 
