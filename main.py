@@ -15,7 +15,7 @@ def main():
     unique_image_name = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in
                                 range(16))
 
-    def refresh_bad_coding_practice():
+    def refresh_unique_image_name():
         global unique_image_name
         unique_image_name = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits)
                                     for _ in range(16))
@@ -34,30 +34,28 @@ def main():
 
         openai.api_key = api_key
 
-        message = f"""Create an outline for a slideshow presentation on the topic of {topic} which is {slide_length} slides 
-        long. 
-        
+        message = f"""Create an outline for a slideshow presentation on the topic of {topic} which is {slide_length}
+        slides long. Make sure it is {slide_length} long.
+
         You are allowed to use the following slide types:
-        
-        Slide types:
         Title Slide - (Title, Subtitle)
         Content Slide - (Title, Content)
         Image Slide - (Title, Content, Image)
         Thanks Slide - (Title)
-        
+
         Put this tag before the Title Slide: [L_TS]
         Put this tag before the Content Slide: [L_CS]
         Put this tag before the Image Slide: [L_IS]
         Put this tag before the Thanks Slide: [L_THS]
-        
+
         Put "[SLIDEBREAK]" after each slide 
-        
+
         For example:
         [L_TS]
         [TITLE]Mental Health[/TITLE]
-        
+
         [SLIDEBREAK]
-        
+
         [L_CS] 
         [TITLE]Mental Health Definition[/TITLE]
         [CONTENT]
@@ -65,9 +63,9 @@ def main():
         2. Can impact one's physical health
         3. Stigmatized too often.
         [/CONTENT]
-        
+
         [SLIDEBREAK]
-        
+
         Put this tag before the Title: [TITLE]
         Put this tag after the Title: [/TITLE]
         Put this tag before the Subitle: [SUBTITLE]
@@ -76,7 +74,7 @@ def main():
         Put this tag after the Content: [/CONTENT]
         Put this tag before the Image: [IMAGE]
         Put this tag after the Image: [/IMAGE]
-        
+
         Elaborate on the Content, provide as much information as possible.
         You put a [/CONTENT] at the end of the Content.
         Do not reply as if you are talking about the slideshow itself. (ex. "Include pictures here about...")
@@ -84,8 +82,8 @@ def main():
         Do not include any additional information in your response and stick to the format."""
 
         response = openai.ChatCompletion.create(
-          model="gpt-3.5-turbo",
-          messages=[
+            model="gpt-3.5-turbo",
+            messages=[
                 {"role": "user", "content": message}
             ]
         )
@@ -103,7 +101,7 @@ def main():
         # """
 
         def delete_all_slides():
-            for i in range(len(root.slides)-1, -1, -1):
+            for i in range(len(root.slides) - 1, -1, -1):
                 r_id = root.slides._sldIdLst[i].rId
                 root.part.drop_rel(r_id)
                 del root.slides._sldIdLst[i]
@@ -130,7 +128,7 @@ def main():
             slide = root.slides.add_slide(layout)
             slide.shapes.title.text = title
             slide.placeholders[2].text = content
-            refresh_bad_coding_practice()
+            refresh_unique_image_name()
             google_crawler = GoogleImageCrawler(downloader_cls=PrefixNameDownloader, storage={'root_dir': os.getcwd()})
             google_crawler.crawl(keyword=image_query, max_num=1)
             dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -145,9 +143,9 @@ def main():
             end_pos = text.find(end_tag)
             result = []
             while start_pos > -1 and end_pos > -1:
-                text_between_tags = text[start_pos+len(start_tag):end_pos]
+                text_between_tags = text[start_pos + len(start_tag):end_pos]
                 result.append(text_between_tags)
-                start_pos = text.find(start_tag, end_pos+len(end_tag))
+                start_pos = text.find(start_tag, end_pos + len(end_tag))
                 end_pos = text.find(end_tag, start_pos)
             res1 = "".join(result)
             res2 = re.sub(r"\[IMAGE\].*?\[/IMAGE\]", '', res1)
@@ -169,9 +167,10 @@ def main():
                     create_title_slide(find_text_in_between_tags(str(slide), "[TITLE]", "[/TITLE]"),
                                        find_text_in_between_tags(str(slide), "[SUBTITLE]", "[/SUBTITLE]"))
                 elif slide_type == "[L_CS]":
-                    create_title_and_content_slide("".join(find_text_in_between_tags(str(slide), "[TITLE]", "[/TITLE]")),
-                                                   "".join(find_text_in_between_tags(str(slide), "[CONTENT]",
-                                                                                     "[/CONTENT]")))
+                    create_title_and_content_slide(
+                        "".join(find_text_in_between_tags(str(slide), "[TITLE]", "[/TITLE]")),
+                        "".join(find_text_in_between_tags(str(slide), "[CONTENT]",
+                                                          "[/CONTENT]")))
                 elif slide_type == "[L_IS]":
                     create_title_and_content_and_image_slide("".join(find_text_in_between_tags(str(slide), "[TITLE]",
                                                                                                "[/TITLE]")),
@@ -197,11 +196,9 @@ def main():
 
         return rf"Done! {find_title()} is ready! You can find it at {os.getcwd()}\{find_title()}.pptx"
 
-
     def button_click():
         if input2.get().isdigit():
             result_label.config(text=generate_ppt(input1.get(), input2.get(), input0.get()))
-
 
     window = tk.Tk()
     window.title("ChatGPT Generated PPTs!")
