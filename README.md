@@ -8,16 +8,12 @@ This is a tool to automatically generate PowerPoint presentations with OpenAI's 
 
 1. Install the following packages:
 ```
-pip install glob
-pip install os
-pip install random
-pip install re
-pip install string
-pip install tkinter
 pip install openai
 pip install icrawler
 pip install python-pptx 
 ```
+(glob, os, random, re, string, tkinter are built-in)
+
 2. Download main.py
 3. Make sure theme0.pptx is in the same directory as main.py
 4. Run main.py
