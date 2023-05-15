@@ -1,17 +1,22 @@
+import base64
 import glob
 import os
 import random
 import re
 import string
 import tkinter as tk
+from urllib.parse import urlparse
 
 import openai
 from icrawler import ImageDownloader
 from icrawler.builtin import GoogleImageCrawler
 from pptx import Presentation
 
+unique_image_name = None
+
 
 def main():
+    global unique_image_name
     unique_image_name = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in
                                 range(16))
 
@@ -23,11 +28,26 @@ def main():
 
     class PrefixNameDownloader(ImageDownloader):
 
+        # def get_filename(self, task, default_ext):
+        #     filename = super(PrefixNameDownloader, self).get_filename(
+        #         task, default_ext)
+        #     refresh_unique_image_name()
+        #     print(unique_image_name)
+        #     return 'prefix_' + unique_image_name + filename
+
         def get_filename(self, task, default_ext):
-            filename = super(PrefixNameDownloader, self).get_filename(
-                task, default_ext)
+            url_path = urlparse(task['file_url'])[2]
+            if '.' in url_path:
+                extension = url_path.split('.')[-1]
+                if extension.lower() not in [
+                    'jpg', 'jpeg', 'png', 'bmp', 'tiff', 'gif', 'ppm', 'pgm'
+                ]:
+                    extension = default_ext
+            else:
+                extension = default_ext
             print(unique_image_name)
-            return 'prefix_' + unique_image_name + filename
+            filename = base64.b64encode(url_path.encode()).decode()
+            return "p_" + unique_image_name + '{}.{}'.format(filename, extension)
 
     def generate_ppt(topic, slide_length, api_key):
         root = Presentation("theme0.pptx")
@@ -47,6 +67,15 @@ def main():
         Put this tag before the Content Slide: [L_CS]
         Put this tag before the Image Slide: [L_IS]
         Put this tag before the Thanks Slide: [L_THS]
+        
+        Put this tag before the Title: [TITLE]
+        Put this tag after the Title: [/TITLE]
+        Put this tag before the Subitle: [SUBTITLE]
+        Put this tag after the Subtitle: [/SUBTITLE]
+        Put this tag before the Content: [CONTENT]
+        Put this tag after the Content: [/CONTENT]
+        Put this tag before the Image: [IMAGE]
+        Put this tag after the Image: [/IMAGE]
 
         Put "[SLIDEBREAK]" after each slide 
 
@@ -66,18 +95,9 @@ def main():
 
         [SLIDEBREAK]
 
-        Put this tag before the Title: [TITLE]
-        Put this tag after the Title: [/TITLE]
-        Put this tag before the Subitle: [SUBTITLE]
-        Put this tag after the Subtitle: [/SUBTITLE]
-        Put this tag before the Content: [CONTENT]
-        Put this tag after the Content: [/CONTENT]
-        Put this tag before the Image: [IMAGE]
-        Put this tag after the Image: [/IMAGE]
 
         Elaborate on the Content, provide as much information as possible.
-        You put a [/CONTENT] at the end of the Content.
-        Do not reply as if you are talking about the slideshow itself. (ex. "Include pictures here about...")
+        REMEMBER TO PLACE a [/CONTENT] at the end of the Content.
         Do not include any special characters (?, !, ., :, ) in the Title.
         Do not include any additional information in your response and stick to the format."""
 
@@ -132,7 +152,7 @@ def main():
             google_crawler = GoogleImageCrawler(downloader_cls=PrefixNameDownloader, storage={'root_dir': os.getcwd()})
             google_crawler.crawl(keyword=image_query, max_num=1)
             dir_path = os.path.dirname(os.path.realpath(__file__))
-            file_name = glob.glob(f"prefix_{unique_image_name}*")
+            file_name = glob.glob(f"p_{unique_image_name}*")
             print(file_name)
             img_path = os.path.join(dir_path, file_name[0])
             slide.shapes.add_picture(img_path, slide.placeholders[1].left, slide.placeholders[1].top,
