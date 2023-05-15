@@ -81,16 +81,16 @@ def main():
 
         For example:
         [L_TS]
-        [TITLE]Mental Health[/TITLE]
+        [TITLE]Among Us[/TITLE]
 
         [SLIDEBREAK]
 
         [L_CS] 
-        [TITLE]Mental Health Definition[/TITLE]
+        [TITLE]What Is Among Us?[/TITLE]
         [CONTENT]
-        1. Definition: A person’s condition with regard to their psychological and emotional well-being
-        2. Can impact one's physical health
-        3. Stigmatized too often.
+        1. Among Us is a popular online multiplayer game developed and published by InnerSloth.
+        2. The game is set in a space-themed setting where players take on the roles of Crewmates and Impostors.
+        3. The objective of Crewmates is to complete tasks and identify the Impostors among them, while the Impostors' goal is to sabotage the spaceship and eliminate the Crewmates without being caught.
         [/CONTENT]
 
         [SLIDEBREAK]
