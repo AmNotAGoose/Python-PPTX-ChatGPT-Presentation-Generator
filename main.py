@@ -101,11 +101,14 @@ def main():
         Do not include any special characters (?, !, ., :, ) in the Title.
         Do not include any additional information in your response and stick to the format."""
 
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "user", "content": message}
-            ]
+                {
+                    "role": "user",
+                    "content": message,
+                },
+            ],
         )
 
         # """ Ref for slide types:
@@ -208,7 +211,7 @@ def main():
 
         print(response)
 
-        parse_response(response['choices'][0]['message']['content'])
+        parse_response(response.choices[0].message.content)
 
         root.save(f"{find_title()}.pptx")
 
