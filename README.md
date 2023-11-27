@@ -11,6 +11,7 @@ pip install openai
 pip install icrawler
 pip install python-pptx 
 ```
+(for icrawler, you may also need to install `six` and `bs4` manually)
 
 2. Download main.py
 3. Make sure theme0.pptx is in the same directory as main.py
