@@ -11,7 +11,6 @@ pip install openai
 pip install icrawler
 pip install python-pptx 
 ```
-(glob, os, random, re, string, tkinter are built-in)
 
 2. Download main.py
 3. Make sure theme0.pptx is in the same directory as main.py
