@@ -213,7 +213,7 @@ def main():
 
         parse_response(response.choices[0].message.content)
 
-        root.save(f"{find_title()}.pptx")
+        root.save(fr"{find_title()}.pptx")
 
         print("done")
 
