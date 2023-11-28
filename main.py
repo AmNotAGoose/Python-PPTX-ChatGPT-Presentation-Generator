@@ -213,11 +213,13 @@ def main():
 
         parse_response(response.choices[0].message.content)
 
-        root.save(fr"{find_title()}.pptx")
+        title = "".join(str(find_title()).split(":"))
+
+        root.save(fr"{title}.pptx")
 
         print("done")
 
-        return rf"Done! {find_title()} is ready! You can find it at {os.getcwd()}\{find_title()}.pptx"
+        return rf"Done! {title} is ready! You can find it at {os.getcwd()}\{title}.pptx"
 
     def button_click():
         if input2.get().isdigit():
