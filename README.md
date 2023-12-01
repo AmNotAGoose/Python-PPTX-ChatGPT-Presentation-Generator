@@ -11,7 +11,7 @@ pip install openai
 pip install icrawler
 pip install python-pptx 
 ```
-(for icrawler, you may also need to install `six` and `bs4` manually)
+(for `icrawler`, you may also need to install `six` and `bs4` manually)
 
 2. Download main.py
 3. Make sure theme0.pptx is in the same directory as main.py
@@ -24,5 +24,5 @@ You will be prompted for an OpenAI API Key. You can find this at [https://platfo
 
 ## Some Notes
 
-- The images cralwed have a random name and will be stored at the root directory, meaning that it will be difficult to sort through!
-- The GUI may freeze when "Submit" is clicked.
+- The images cralwed have a random name and will be stored at the root directory!
+- The GUI may freeze when "Submit" is clicked. It will unfreeze once it is finished.
