@@ -3,6 +3,12 @@
 
 This is a tool to automatically generate PowerPoint presentations with OpenAI's gpt-3.5-turbo-0301 model (ChatGPT) and python-PPTX.
 
+## TODO
+
+- Model selection option
+- Fix GUI freezing issues
+- Create new directory for each presentation
+
 ## Setup
 
 1. Install the following packages:
