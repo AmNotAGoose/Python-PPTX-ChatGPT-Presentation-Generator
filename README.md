@@ -3,6 +3,11 @@
 
 A tool to generate PowerPoint presentations using text generation based on a single prompt.
 
+
+![image](https://github.com/user-attachments/assets/330a4995-c8eb-480f-91ba-0f164a53efff)
+![image](https://github.com/user-attachments/assets/9159798b-c190-46be-9b9d-ab84f1afcf4d)
+See a full example in `/examples` !
+
 ## Features
 - Supports OpenAI and Cohere endpoints
 - Specify a number of slides
@@ -15,7 +20,7 @@ A tool to generate PowerPoint presentations using text generation based on a sin
    cd PPTX-Presentation-Generator
    ```
 
-2. Install the required packages:
+2. Install the required packages (use an elevated shell for Windows / sudo for Linux):
    ```bash
    pip install -r requirements.txt
    ```
