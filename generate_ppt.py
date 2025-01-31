@@ -10,7 +10,6 @@ from apis.cohere_api import CohereAPIClient
 from crawlers.icrawlercrawler import ICrawlerCrawler
 from utils import get_config, get_settings
 
-config = get_config()
 settings = get_settings()
 
 api_clients = {
@@ -31,6 +30,7 @@ def get_generative_api_client(_generative_api_name, api_key, _generative_model_n
 
 
 def generate_ppt(topic, api_name, model_name, num_slides):
+    config = get_config()
     legal_topic = re.sub(r'[^\w\s-]', '', topic).strip().replace(' ', '_')
 
     save_dir = os.path.join(config["save_location"], legal_topic)
