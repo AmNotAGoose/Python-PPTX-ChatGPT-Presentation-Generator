@@ -15,13 +15,7 @@ A tool to generate PowerPoint presentations using text generation based on a sin
    cd PPTX-Presentation-Generator
    ```
 
-2. Create a virtual environment (optional but recommended):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
-
-3. Install the required packages:
+2. Install the required packages:
    ```bash
    pip install -r requirements.txt
    ```
