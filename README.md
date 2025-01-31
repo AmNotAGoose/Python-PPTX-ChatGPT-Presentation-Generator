@@ -32,6 +32,7 @@ To launch the user interface:
 ```bash
 python ui.py
 ```
+Fill out the fields and press "Save API Key," then "Submit." This may freeze the GUI and take a while.
 
 ## API keys
 
