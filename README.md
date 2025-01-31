@@ -4,8 +4,9 @@
 A tool to generate PowerPoint presentations using text generation based on a single prompt.
 
 
-![image](https://github.com/user-attachments/assets/330a4995-c8eb-480f-91ba-0f164a53efff)
-![image](https://github.com/user-attachments/assets/9159798b-c190-46be-9b9d-ab84f1afcf4d)
+https://github.com/user-attachments/assets/6bb9cca8-35fa-4be9-9ec5-69237abea92f
+
+
 See a full example in `/examples` !
 
 ## Features
