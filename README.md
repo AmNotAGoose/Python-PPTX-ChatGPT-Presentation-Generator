@@ -11,7 +11,7 @@ A tool to generate PowerPoint presentations using text generation based on a sin
 
 1. Clone this repository to your local machine:
    ```bash
-   git clone (https://github.com/AmNotAGoose/PPTX-Presentation-Generator)
+   git clone https://github.com/AmNotAGoose/PPTX-Presentation-Generator
    cd PPTX-Presentation-Generator
    ```
 
