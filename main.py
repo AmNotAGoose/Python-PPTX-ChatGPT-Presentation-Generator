@@ -55,14 +55,14 @@ def main():
         openai.api_key = api_key
 
         message = f"""Create an outline for a slideshow presentation on the topic of {topic} which is {slide_length}
-        slides long. Make sure it is {slide_length} long.
+        slides long. Make sure there are ONLY {slide_length} slides. This includes the title and thanks slide.
 
         You are allowed to use the following slide types:
         Title Slide - (Title, Subtitle)
         Content Slide - (Title, Content)
         Image Slide - (Title, Content, Image)
         Thanks Slide - (Title)
-
+        
         Put this tag before the Title Slide: [L_TS]
         Put this tag before the Content Slide: [L_CS]
         Put this tag before the Image Slide: [L_IS]
@@ -70,7 +70,7 @@ def main():
         
         Put this tag before the Title: [TITLE]
         Put this tag after the Title: [/TITLE]
-        Put this tag before the Subitle: [SUBTITLE]
+        Put this tag before the Subtitle: [SUBTITLE]
         Put this tag after the Subtitle: [/SUBTITLE]
         Put this tag before the Content: [CONTENT]
         Put this tag after the Content: [/CONTENT]
