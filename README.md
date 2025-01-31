@@ -1,13 +1,11 @@
-# Python-PPTX-ChatGPT-Presentation-Generator
+# PPTX Presentation Generator
 ## Overview
 
-This is a tool to automatically generate PowerPoint presentations with OpenAI's gpt-3.5-turbo-0301 model (ChatGPT) and python-PPTX.
+A tool to generate PowerPoint presentations using text generation based on a single prompt.
 
-## TODO
-
-- Model selection option
-- Fix GUI freezing issues
-- Create new directory for each presentation
+## Features
+- Supports OpenAI and Cohere endpoints
+- Specify a number of slides
 
 ## Setup
 
