@@ -15,7 +15,7 @@ A tool to generate PowerPoint presentations using text generation based on a sin
    cd PPTX-Presentation-Generator
    ```
 
-2. Install the required packages:
+2. Install the required packages (use an elevated shell for Windows / sudo for Linux):
    ```bash
    pip install -r requirements.txt
    ```
